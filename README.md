@@ -14,29 +14,37 @@ or run
 
 Then headover to http://localhost or http://127.0.0.1 and there you should see the moodle installation page
 
-You need to enter the container using docker-enter and then set the permissions for all files in the /var/www/html directory using
+You need to might need to enter the container using docker-enter and then set the permissions for all files in the /var/www/html directory using
 ```bash
 chmod 777 -R /var/www/html
 ```
+Or you can just set the same permissions to your local moodle folder  
+
 This will then allow the moodle installation script to run and configure
 your files accordingly. After this you can change your permissions back
 
 The Moodle installation might ask you for some details regarding your server and database
 
-## Moodle
+**Moodle**
+```
 moodle_path: /var/www/html
 moodle_data_path /var/www/moodledata
+```
 
-## Apache Server
+**Apache Server**
+```
 host: localhost
+```
 
-## MySQL Database
+**MySQL Database**
+```
 host: localhost
 port: 3306
 user: moodleuser
 password: moodle
+```
 
-## Container
+**Container**
 To start and stop and remove the container your can use the container name which moodle
 ```bash
 docker stop moodle
