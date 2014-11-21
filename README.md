@@ -34,7 +34,7 @@ The Moodle installation might ask you for some details regarding your server and
 **Moodle**
 ```
 moodle_path: /var/www/html
-moodle_data_path /var/www/moodledata
+moodle_data_path: /var/www/moodledata
 ```
 
 **Apache Server**
@@ -51,7 +51,6 @@ password: moodle
 ```
 
 **Container**
-To start and stop and remove the container your can use the container name which moodle
 ```bash
 sudo docker-enter moodle
 docker stop moodle
