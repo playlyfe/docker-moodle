@@ -36,3 +36,9 @@ port: 3306
 user: moodleuser
 password: moodle
 
+## Container
+To start and stop and remove the container your can use the container name which moodle
+```bash
+docker stop moodle
+```
+
