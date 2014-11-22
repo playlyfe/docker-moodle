@@ -13,23 +13,19 @@ docker run -d -p 80:80 -p 3306:3306 -v /path/to/moodle:/var/www/html playlyfe/mo
 ```
 or
 ```bash
-./deploy-local.sh  # with your path to moodle
+./deploy-local.sh /path/to/moodle
 ```
 
-Then headover to http://localhost or http://127.0.0.1 and there you should see the moodle installation page
-
-### Step 3: Configure Read/Write permissions to your moodle folder
-You need to might need to enter the container using docker-enter and then set the permissions for all files in the /var/www/html directory using
+### Step 3: Configure Read/Write/Execute permissions to your moodle folder
+Set permissions for all files in your moodle directory using
 ```bash
-chmod 777 -R /var/www/html
+chmod 777 -R /path/to/moodle
 ```
-Or you can just set the same permissions to your local moodle folder it might work (haven't tried it yet)
-
 This will then allow the moodle installation script to run and configure
 your files accordingly. After this you can change your permissions back
 
 ### Step 4: Installation
-The Moodle installation might ask you for some details regarding your server and database
+Then headover to http://localhost or http://127.0.0.1 and there you should see the moodle installation page. The Moodle installation might ask you for some details regarding your server and database. The details for the configuration is given below
 
 **Moodle**
 ```
@@ -52,7 +48,8 @@ password: moodle
 
 **Container**
 ```bash
-sudo docker-enter moodle
-docker stop moodle
+sudo docker-enter 
+docker stop 
+docker rm moodle
 ```
 
