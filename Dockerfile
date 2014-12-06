@@ -24,6 +24,7 @@ RUN chmod 755 /*.sh
 
 # config to enable .htaccess
 ADD apache_default /etc/apache2/sites-available/000-default.conf
+ADD ports_default /etc/apache2/ports.conf
 RUN a2enmod rewrite
 
 #Enviornment variables to configure php
@@ -32,8 +33,6 @@ ENV PHP_POST_MAX_SIZE 10M
 
 # Add volumes for MySQL
 VOLUME ["/etc/mysql", "/var/lib/mysql" ]
-
-RUN php -r "readfile('https://getcomposer.org/installer');" | php
 
 # Configure locales
 RUN locale-gen en_US en_US.UTF-8
@@ -44,5 +43,5 @@ RUN adduser --disabled-password --gecos moodle moodleuser
 RUN mkdir /var/www/moodledata
 RUN chmod 777 /var/www/moodledata
 
-EXPOSE 80 3306
+EXPOSE 3000 3306
 CMD ["/run.sh"]

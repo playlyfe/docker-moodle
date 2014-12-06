@@ -1,6 +1,6 @@
 # Docker Moodle
 This is the Docker Image for The Moodle LMS
-Using this it becomes really easy to setup a moodle installation without setting up the apache server and MySQL databases all this is done through docker
+Using this makes it really easy to setup a moodle installation without setting up the apache server and MySQL databases all this is done through docker
 
 ### Step 1: Build the image
 ```bash
