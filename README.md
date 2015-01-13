@@ -19,10 +19,11 @@ or
 ### Step 3: Configure Read/Write/Execute permissions to your moodle folder
 Set permissions for all files in your moodle directory using
 ```bash
-chmod 777 -R /path/to/moodle
+chmod 755 -R /path/to/moodle
 ```
 This will then allow the moodle installation script to run and configure
 your files accordingly. After this you can change your permissions back
+(TODO:!Need to change this)
 
 ### Step 4: Installation
 Then headover to http://localhost or http://127.0.0.1 and there you should see the moodle installation page. The Moodle installation might ask you for some details regarding your server and database. The details for the configuration is given below
@@ -48,8 +49,8 @@ password: moodle
 
 **Container**
 ```bash
-sudo docker-enter 
-docker stop 
+sudo docker-enter moodle
+docker stop moodle
+docker start moodle
 docker rm moodle
 ```
-
