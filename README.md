@@ -1,6 +1,8 @@
 # Docker Moodle
 This is the Docker Image for The Moodle LMS
-Using this makes it really easy to setup a moodle installation without setting up the apache server and MySQL databases all this is done through docker
+Using this makes it really easy to setup a moodle installation without setting up the apache server and MySQL databases all this is done through docker.
+
+To get the latest version of moodle head over to [MOODLE_29_STABLE](https://github.com/moodle/moodle/tree/MOODLE_29_STABLE) and download the zip file. Then unzip this file to a folder and replace all `/path/to/moodle` with the location to this moodle source code folder.
 
 ### Step 1: Build the image
 ```bash
