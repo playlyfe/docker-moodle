@@ -4,9 +4,10 @@ Using this makes it really easy to setup a moodle installation without setting u
 
 To get the latest version of moodle head over to [MOODLE_29_STABLE](https://github.com/moodle/moodle/tree/MOODLE_29_STABLE) and download the zip file. Then unzip this file to a folder and replace all `/path/to/moodle` with the location to this moodle source code folder.
 
+Download or clone this repo and then within its folder run this command to build the docker image
 ### Step 1: Build the image
 ```bash
-./build.sh
+docker build --tag="playlyfe/moodle" .
 ```
 
 ### Step 2: Run the Container
