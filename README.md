@@ -7,7 +7,7 @@ To get the latest version of moodle head over to [MOODLE_29_STABLE](https://gith
 Download or clone this repo and then within its folder run this command to build the docker image
 ### Step 1: Build the image
 ```bash
-docker build --tag="playlyfe/moodle" .
+docker build --tag="playlyfe/moodle:latest" .
 ```
 
 ### Step 2: Run the Container
