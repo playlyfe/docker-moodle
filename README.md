@@ -11,11 +11,7 @@ To get the latest version of moodle head over to [MOODLE_29_STABLE](https://gith
 
 ### Step 2: Run the Container
 ```bash
-docker run -d -p 80:80 -p 3306:3306 -v /path/to/moodle:/var/www/html playlyfe/moodle
-```
-or
-```bash
-./deploy-local.sh /path/to/moodle
+docker run -d --name moodle -p 80:80 -p 3306:3306 -v /path/to/moodle:/var/www/html playlyfe/moodle
 ```
 
 ### Step 3: Configure Read/Write/Execute permissions to your moodle folder
