@@ -19,7 +19,7 @@ or
 ### Step 3: Configure Read/Write/Execute permissions to your moodle folder
 Set permissions for all files in your moodle directory using
 ```bash
-chmod 755 -R /path/to/moodle
+chmod -R 755 /path/to/moodle
 ```
 This will then allow the moodle installation script to run and configure
 your files accordingly. After this you can change your permissions back
