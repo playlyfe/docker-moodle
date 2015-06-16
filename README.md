@@ -12,8 +12,9 @@ docker build --tag="playlyfe/moodle:latest" .
 
 ### Step 2: Run the Container
 ```bash
-docker run -d --name moodle -p 80:80 -p 3306:3306 -v /path/to/moodle:/var/www/html playlyfe/moodle
+docker run -d --name moodle -p 3000:3000 -p 3306:3306 -v /path/to/moodle:/var/www/html playlyfe/moodle
 ```
+The apache server listens on port 3000 so we bind that to the port 3000 on the host machine. And the mysql database listens on port 3306 and we bind that to the host port 3306.
 
 ### Step 3: Configure Read/Write/Execute permissions to your moodle folder
 Set permissions for all files in your moodle directory using
@@ -25,7 +26,7 @@ your files accordingly. After this you can change your permissions back
 (TODO:!Need to change this)
 
 ### Step 4: Installation
-Then headover to http://localhost or http://127.0.0.1 and there you should see the moodle installation page. The Moodle installation might ask you for some details regarding your server and database. The details for the configuration is given below
+Then headover to http://localhost:3000 and there you should see the moodle installation page. The Moodle installation might ask you for some details regarding your server and database. The details for the configuration is given below
 
 **Moodle**
 ```
@@ -35,7 +36,7 @@ moodle_data_path: /var/www/moodledata
 
 **Apache Server**
 ```
-host: localhost
+host: localhost:3000
 ```
 
 **MySQL Database**
@@ -52,4 +53,49 @@ sudo docker-enter moodle # To enter the container so that you can access the dat
 docker start moodle # To start your moodle instance
 docker stop moodle # To stop your moodle instance
 docker rm moodle # To delete your moodle instance container. Warning this will delete all your data also.
+```
+
+At the end of the installation this is how your `config.php` should look like, You can ignore the open shift stuff
+```php
+<?php  // Moodle configuration file
+
+unset($CFG);
+global $CFG;
+$CFG = new stdClass();
+
+$CFG->dbtype    = 'mysqli';
+$CFG->dblibrary = 'native';
+$CFG->dbhost    = 'localhost';
+$CFG->dbname    = 'moodle';
+$CFG->dbuser    = 'moodleuser';
+$CFG->dbpass    = 'moodle';
+// For openshift
+// $CFG->dbhost    = $_ENV['OPENSHIFT_MYSQL_DB_HOST'];
+// $CFG->dbname    = $_ENV['OPENSHIFT_APP_NAME'];
+// $CFG->dbuser    = $_ENV['OPENSHIFT_MYSQL_DB_USERNAME'];
+// $CFG->dbpass    = $_ENV['OPENSHIFT_MYSQL_DB_PASSWORD'];
+$CFG->prefix    = 'mdl_';
+$CFG->dboptions = array (
+  'dbpersist' => 0,
+  'dbport' => 3306,
+  'dbsocket' => '',
+);
+
+// $CFG->dboptions = array (
+//   'dbpersist' => 0,
+//   'dbport' => $_ENV['OPENSHIFT_MYSQL_DB_PORT'],
+//   'dbsocket' => '',
+// );
+
+$CFG->wwwroot   = 'http://localhost:3000';
+$CFG->dataroot  = '/var/www/moodledata';
+$CFG->admin     = 'admin';
+
+$CFG->directorypermissions = 0777;
+
+require_once(dirname(__FILE__) . '/lib/setup.php');
+
+// There is no php closing tag in this file,
+// it is intentional because it prevents trailing whitespace problems!
+
 ```
