@@ -47,9 +47,9 @@ password: moodle
 ```
 
 **Container**
-```bash
-sudo docker-enter moodle
-docker stop moodle
-docker start moodle
-docker rm moodle
+```sh
+sudo docker-enter moodle # To enter the container so that you can access the database through the `mysql` command
+docker start moodle # To start your moodle instance
+docker stop moodle # To stop your moodle instance
+docker rm moodle # To delete your moodle instance container. Warning this will delete all your data also.
 ```
