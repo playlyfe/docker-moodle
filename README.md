@@ -1,4 +1,4 @@
-# Docker Moodle
+# Docker Moodle LMS
 This is the Docker Image for The Moodle LMS
 Using this makes it really easy to setup a moodle installation without setting up the apache server and MySQL databases all this is done through docker.
 
@@ -9,12 +9,17 @@ Download or clone this repo and then within its folder run this command to build
 ```bash
 docker build --tag="playlyfe/moodle:latest" .
 ```
+This will build the latest playlyfe/moodle docker image
 
 ### Step 2: Run the Container
 ```bash
 docker run -d --name moodle -p 3000:3000 -p 3306:3306 -v /path/to/moodle:/var/www/html playlyfe/moodle
 ```
 The apache server listens on port 3000 so we bind that to the port 3000 on the host machine. And the mysql database listens on port 3306 and we bind that to the host port 3306.
+This will start a moodle instance with the moodle source path which you provided as `/path/to/moodle`.
+Once its setup you can try  
+`docker ps` to see if your moodle container is up  
+`docker logs moodle` to see if whether moodle has started.
 
 ### Step 3: Configure Read/Write/Execute permissions to your moodle folder
 Set permissions for all files in your moodle directory using
