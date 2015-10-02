@@ -16,7 +16,7 @@ This will build the latest playlyfe/moodle docker image
 docker run -d --name moodle -p 3000:3000 -p 3306:3306 -v /path/to/moodle:/var/www/html playlyfe/moodle
 ```
 The apache server listens on port 3000 so we bind that to the port 3000 on the host machine. And the mysql database listens on port 3306 and we bind that to the host port 3306.
-This will start a moodle instance with the moodle source path which you provided as `/path/to/moodle`.
+This will start a moodle instance with the moodle absolute source path which you provided as `/path/to/moodle`.
 Once its setup you can try  
 `docker ps` to see if your moodle container is up  
 `docker logs moodle` to see if whether moodle has started.
@@ -54,7 +54,7 @@ password: moodle
 
 **Container**
 ```sh
-sudo docker-enter moodle # To enter the container so that you can access the database through the `mysql` command
+docker exec -it moodle bash # To enter the container so that you can access the database through the `mysql` command
 docker start moodle # To start your moodle instance
 docker stop moodle # To stop your moodle instance
 docker rm moodle # To delete your moodle instance container. Warning this will delete all your data also.
