@@ -1,10 +1,18 @@
-FROM ubuntu:trusty
+FROM ubuntu:14.04
 MAINTAINER Peter John <peter@playlyfe.com>
 
 # Install packages
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && \
-apt-get -y install curl supervisor apache2 libapache2-mod-php5 mysql-server php5-mysql pwgen php-apc php5-mcrypt php5-gd php5-curl php5-xmlrpc php5-intl
+
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+
+RUN apt-get update
+RUN apt-get -y install python-software-properties software-properties-common
+RUN add-apt-repository -y ppa:ondrej/php
+RUN apt-get update
+RUN \
+apt-get -y install curl supervisor apache2 mysql-client mysql-server php5.6 graphviz aspell php5.6-pspell php5.6-curl php5.6-gd php5.6-intl php5.6-mysql php5.6-xmlrpc php5.6-xml php5.6-ldap php5.6-zip
 
 # Add image configuration and scripts
 ADD start-apache2.sh /start-apache2.sh
