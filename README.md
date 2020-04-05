@@ -1,4 +1,11 @@
-# Docker Moodle LMS
+Docker Moodle LMS
+===
+
+---
+**Attention**: This project is not maintained anymore and we can't give any support for it.
+
+---
+
 This is the Docker Image for The Moodle LMS
 Using this makes it really easy to setup a moodle installation without setting up the apache server and MySQL databases all this is done through docker.
 
